@@ -1,0 +1,104 @@
+/* Yantramanav Static from Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Yantramanav", sans-serif !important;
+}
+
+body {
+    background: linear-gradient(135deg, #ffffff, #d0d0d0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+p {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wallet-icon {
+    width: 200px;
+    position: absolute;
+    top: -30px;
+    right: 45%;
+    transform: translate(50%, -50%) rotate(-20deg);
+    z-index: -1;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-text {
+    text-wrap: pretty;
+}
+
+.footer-card-main {
+    display: flex;
+    gap: 20px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 767px) {
+    .site-title {
+        text-align: center;
+    }
+
+    .wallet-icon {
+        width: 150px;
+        top: -25px;
+    }
+
+    .welcome-text {
+        text-align: center;
+    }
+
+    .footer-card-main {
+        justify-content: center;
+    }
+
+    .login-button-container {
+        width: 100%;
+    }
+
+    .login-btn {
+        justify-content: center;
+    }
+}
+
+/* Estilos para tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+
