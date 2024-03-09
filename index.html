@@ -21,35 +21,64 @@
 
 </head>
 <body>
+<div class="d-flex flex-column overflow-hidden min-vh-100 vh-100">
 
-<main class="vw-100 vh-100 d-flex flex-column justify-content-center align-items-center">
-    <section class="col-11 col-sm-10 col-lg-8 col-xl-6 card">
-        <img class="wallet-icon" src="./assets/media/images/wallet.svg" alt="Wallet icon">
-        <header>
-            <h1 class="site-title">💰 V-Wallet</h1>
-        </header>
-        <article>
-            <div class="welcome-text">
-                <p>
-                    Bienvenidos(as) a la mejor billetera virtual de Internet. Aquí podrá manejar sus finanzas
-                    de una manera segura y muy fácil e intuitiva.
-                </p>
-                <p>
-                    Para comenzar puede Ingresar si ya tiene una cuenta.
-                </p>
-            </div>
-            <hr>
-            <div class="footer-card-main">
-                <div class="login-button-container">
-                    <a class="login-btn d-flex gap-2 btn btn-primary fs-5" href="./pages/login.html">
-                        <i class="bi bi-briefcase"></i>
-                        Login
-                    </a>
+    <header class="bg-dark text-white text-center">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html"><i class="bi bi-wallet2"></i> vWallet</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./pages/login.html">
+                                Login
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </article>
-    </section>
-</main>
+        </nav>
+    </header>
+    <main role="main" class="flex-grow-1 overflow-auto d-flex flex-column justify-content-center align-items-center">
+        <div class="card col-11 col-sm-10 col-lg-8 col-xl-6">
+            <img class="wallet-icon" src="./assets/media/images/wallet.svg" alt="Wallet icon">
+            <h1 class="card-header">💰 V-Wallet</h1>
+            <div class="card-body">
+                <p class="fs-5">
+                    Bienvenidos(as) a la mejor billetera virtual de Internet. Aquí podrá manejar sus finanzas
+                    de una manera segura y muy fácil e intuitiva. Para comenzar puede Ingresar si ya tiene una cuenta.
+                </p>
+                <a class="login-btn btn btn-primary fs-5 col-12 col-sm-12 col-lg-3 col-xl-3" href="./pages/login.html">
+                    <i class="bi bi-briefcase"></i>
+                    Login
+                </a>
+            </div>
+        </div>
+    </main>
 
+    <footer class="flex-grow-0 bg-dark text-white d-flex justify-content-center align-items-center">
+        <div class="container text-center">
+            <div class="fs-6">Hecho con el <i class="bi bi-heart"></i> por <a href="https://uncodigo.com/" class="text-white">Felipe</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<!-- Bootstrap Js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<!-- JavaScript -->
+<script src="./assets/js/main.js" type="module"></script>
 </body>
 </html>

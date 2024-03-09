@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Send Money | V-Wallet</title>
+    <title>Enviar dinero - V-Wallet</title>
 
     <link rel="shortcut icon" href="../assets/media/images/favicon.ico" type="image/x-icon">
 
@@ -21,87 +21,116 @@
 
 </head>
 <body>
-
-<main class="vw-100 vh-100 d-flex flex-column justify-content-center align-items-center">
-    <section class="col-11 col-xs-11 col-sm-11 col-md-6 col-lg-6 col-xxl-4 card">
-        <nav class="nav-menu mb-3">
-            <a href="#" class="btn btn-light text-secondary border border-secondary btn-sm">
-                <i class="bi bi-person-gear"></i> Config
-            </a>
-            <a href="../index.html" class="btn btn-light text-secondary border border-secondary btn-sm">
-                <i class="bi bi-box-arrow-right"></i> Salir
-            </a>
+<div class="d-flex flex-column">
+    <header class="bg-dark text-white text-center">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html"><i class="bi bi-wallet2"></i> vWallet</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../pages/login.html">
+                                <i class="bi bi-person-fill-gear"></i> Config
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../pages/login.html">
+                                <i class="bi bi-box-arrow-right"></i> Salir
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-        <img class="wallet-icon" src="../assets/media/images/wallet.svg" alt="Wallet icon">
-        <header>
-            <h1 class="text-center">🏦 Enviar dinero</h1>
-            <hr/>
-        </header>
-        <article class="w-100 d-flex justify-content-center">
-            <form class="w-100">
-                <div class="mb-3">
-                    <label for="email" class="form-label fs-5">
-                        Buscar contacto:
-                    </label>
-                    <input type="number" placeholder="Escribir..." class="form-control fs-3" id="email" required>
-                </div>
-                <a class="mb-2 w-100 d-flex justify-content-center gap-2 btn btn-lg btn-primary" data-bs-toggle="modal"
-                   data-bs-target="#addContactModal">
-                    <i class="bi bi-person-add"></i>
-                    Agregar un contacto
-                </a>
-                <hr />
-                <h4>Contactos</h4>
+    </header>
+    <main class="container pt-5"
+          role="main">
+        <div class="card col-12 col-sm-12 col-lg-12 col-xl-12 card-special">
+            <img class="wallet-icon" src="../assets/media/images/wallet.svg" alt="Wallet icon">
+            <h1 class="card-header fs-3">🏦 Enviar dinero</h1>
+            <div class="card-body">
+                <form class="w-100">
+                    <div class="mb-3">
+                        <label for="email" class="form-label fs-5">
+                            Buscar contacto:
+                        </label>
+                        <input type="number" placeholder="Escribir..." class="form-control fs-3" id="email" required>
+                    </div>
+                    <a class="mb-2 w-100 d-flex justify-content-center gap-2 btn btn-lg btn-primary" data-bs-toggle="modal"
+                       data-bs-target="#addContactModal">
+                        <i class="bi bi-person-add"></i>
+                        Agregar un contacto
+                    </a>
+                    <hr />
+                    <h4>Contactos</h4>
 
-                <div class="accordion accordion-flush my-3" id="accordionFlushExample">
-                    <div class="accordion-item border">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapse1" aria-expanded="false"
-                                    aria-controls="flush-collapseOne">
-                                <i class="bi bi-person-circle"></i> &nbsp John Doe
-                            </button>
-                        </h2>
-                        <div id="flush-collapse1" class="accordion-collapse collapse"
-                             data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body d-flex justify-content-between">
-                                <div>
-                                    <span class="badge text-bg-secondary fs-6">Alias: john.doe</span>
-                                    <strong>CBU:</strong> 123456789 - <strong>Banco:</strong> ABC Bank
+                    <div class="accordion accordion-flush my-3" id="accordionFlushExample">
+                        <div class="accordion-item border">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse1" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                    <i class="bi bi-person-circle"></i> &nbsp John Doe
+                                </button>
+                            </h2>
+                            <div id="flush-collapse1" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body d-flex justify-content-between">
+                                    <div>
+                                        <span class="badge text-bg-secondary fs-6">Alias: john.doe</span>
+                                        <strong>CBU:</strong> 123456789 - <strong>Banco:</strong> ABC Bank
+                                    </div>
+                                    <i class="bi bi-pencil-square fs-5 cursor-pointer"></i>
                                 </div>
-                                <i class="bi bi-pencil-square fs-5 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-item border">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse2" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                    <i class="bi bi-person-circle"></i> &nbsp Jane Smith
+                                </button>
+                            </h2>
+                            <div id="flush-collapse2" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body d-flex justify-content-between">
+                                    <div>
+                                        <span class="badge text-bg-secondary fs-6">Alias: jane.smith</span>
+                                        <strong>CBU:</strong> 987654321 - <strong>Banco:</strong> XYZ Bank
+                                    </div>
+                                    <i class="bi bi-pencil-square fs-5 cursor-pointer"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item border">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapse2" aria-expanded="false"
-                                    aria-controls="flush-collapseOne">
-                                <i class="bi bi-person-circle"></i> &nbsp Jane Smith
-                            </button>
-                        </h2>
-                        <div id="flush-collapse2" class="accordion-collapse collapse"
-                             data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body d-flex justify-content-between">
-                                <div>
-                                    <span class="badge text-bg-secondary fs-6">Alias: jane.smith</span>
-                                    <strong>CBU:</strong> 987654321 - <strong>Banco:</strong> XYZ Bank
-                                </div>
-                                <i class="bi bi-pencil-square fs-5 cursor-pointer"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <a class="w-100 d-flex justify-content-center gap-2 btn btn-lg btn-secondary" href="./menu.html">
-                    <i class="bi bi-box-arrow-in-left"></i>
-                    Volver al menú
-                </a>
-            </form>
-        </article>
-    </section>
-</main>
+                    <a class="w-100 d-flex justify-content-center gap-2 btn btn-lg btn-secondary" href="./menu.html">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                        Volver al menú
+                    </a>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white d-flex justify-content-center align-items-center">
+        <div class="container text-center">
+            <div class="fs-6">Hecho con el <i class="bi bi-heart"></i> por <a href="https://uncodigo.com/"
+                                                                              class="text-white">Felipe</a></div>
+        </div>
+    </footer>
+
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="miModalLabel"
@@ -196,8 +225,11 @@
     </div>
 </div>
 
+<!-- Bootstrap Js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<!-- JavaScript -->
+<script src="../assets/js/main.js" type="module"></script>
 </body>
 </html>
