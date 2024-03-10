@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../pages/login.html">
+                            <a class="nav-link" id="logout-link" aria-current="page" href="#">
                                 <i class="bi bi-box-arrow-right"></i> Salir
                             </a>
                         </li>
@@ -56,16 +56,21 @@
           role="main">
         <div class="card col-12 col-sm-12 col-lg-12 col-xl-12 my-3">
             <img class="wallet-icon" src="../assets/media/images/wallet.svg" alt="Wallet icon">
-            <h1 class="card-header fs-3">💰 Menú Principal</h1>
+            <h1 class="card-header fs-3">
+                <i class="bi bi-person-circle"></i>
+                <span id="welcome-message"></span>
+                <i class="bi bi-stars"></i>
+                Elige una opción
+            </h1>
             <div class="card-body">
                 <ul class="list-group w-100">
                     <li class="list-group-item d-flex flex-column align-items-center">
-                        <h2 class="available-balance fs-2 fw-bold">
+                        <h2 id="balance" class="available-balance fs-2 fw-bold">
                             $60.000 CLP
                         </h2>
                         <span class="badge text-bg-success fs-6">
                             <i class="bi bi-wallet2"></i>
-                            Saldo en su cuenta
+                            Saldo en tu cuenta
                         </span>
                     </li>
                     <li class="list-group-item">
@@ -100,6 +105,20 @@
         </div>
     </footer>
 
+</div>
+
+<!-- Toaster Bootstrap -->
+<div class="toast-container toast-check">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto"><i class="bi bi-check-circle-fill text-primary"></i> Deposito exitoso</strong>
+            <small>Ahora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Su depósito fue agregado con éxito!
+        </div>
+    </div>
 </div>
 
 <!-- Bootstrap Js -->
