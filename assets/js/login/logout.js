@@ -1,7 +1,7 @@
 import {logoutLink} from "./elements.js";
 
 export const logout = () => {
-  logoutLink.addEventListener('click', logoutInit);
+  $(logoutLink).on('click', logoutInit);
 }
 
 export function logoutInit() {

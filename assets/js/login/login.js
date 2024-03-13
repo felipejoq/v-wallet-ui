@@ -5,8 +5,8 @@ import {navigateTo} from "../utils/navigate.js";
 
 export const loginAction = ({loginForm}) => {
   const data = JSON.parse(localStorage.getItem('data'));
-  if(data.user) navigateTo({path: '/pages/menu.html'})
-  loginForm.addEventListener('submit', (event) => {
+  if(data.user) navigateTo({path: '/pages/menu.html'});
+  $(loginForm).on('submit', (event) => {
     event.preventDefault();
 
     const request = {
@@ -24,7 +24,7 @@ export const loginAction = ({loginForm}) => {
         callback: navigateTo
       });
     }
-  }, false);
+  });
 }
 
 function isValidLogin({emailUser, passwordUser}) {

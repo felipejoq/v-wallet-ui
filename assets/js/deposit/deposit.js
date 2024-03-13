@@ -4,7 +4,7 @@ import {navigateTo} from "../utils/navigate.js";
 
 export const depositInit = () => {
   depositAmount.focus();
-  btnDeposit.addEventListener('click', (event) => {
+  $(btnDeposit).on('click', (event) => {
     addDeposit();
   })
 }
