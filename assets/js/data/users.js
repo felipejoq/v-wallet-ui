@@ -4,6 +4,28 @@ export const USERS = [
     password: '123123',
     email: 'test@test.com',
     balance: 60000,
+    transactions: [
+      {
+        title: 'Transferencia a terceros',
+        contact_id: 1,
+        total: -10000,
+      },
+      {
+        title: 'Deposito misma cuenta',
+        contact_id: 0,
+        total: 15000,
+      },
+      {
+        title: 'Transferencia de terceros',
+        contact_id: 2,
+        total: 1000,
+      },
+      {
+        title: 'Compra en línea',
+        contact_id: -1,
+        total: -15000,
+      }
+    ],
     contacts: [
       {
         id: 1,
