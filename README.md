@@ -4,9 +4,9 @@ Este proyecto contiene una maqueta hecha con herramientas básicas para la creac
 
 > Datos de pruebas
 
-- user: test@test.com pass: 123123
-- user: isaura@test.com pass: 123123
-- user: cesar@test.com pass: 123123
+- user: test@test.com password: 123123
+- user: isaura@test.com password: 123123
+- user: cesar@test.com password: 123123
 
 ## Capturas
 
