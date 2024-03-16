@@ -20,7 +20,7 @@ export const loginAction = ({loginForm}) => {
       result.user.logged = true;
       localStorage.setItem('data', JSON.stringify({ ...data, user: result.user }));
       loading({
-        location: `/pages/menu.html`,
+        location: `pages/menu.html`,
         timeMs: 2000,
         callback: navigateTo
       });
