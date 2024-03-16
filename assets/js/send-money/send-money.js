@@ -1,10 +1,33 @@
+import { TRANSACTIONS_TYPE } from "../data/users.js";
+import { logout } from "../login/logout.js";
 import { loading } from "../utils/loading.js";
-import { accordionContacts, addAccountContactForm, alertAddContactFail, modalAddContact } from "./elements.js";
+import { navigateTo } from '../utils/navigate.js';
+import { accordionContacts, addAccountContactForm, alertAddContactFail, alertInfoSendMoneyQty, contactNameLabel, modalAddContact, modalSendMoney, searchContactsInput, sendMoneyBtn, sendMoneyQtyInput, showAllContactsBtn } from "./elements.js";
 
 export function sendMoneyInit() {
-  alertAddContactFail.style.display = 'none'
-  loadContacts();
+  $(alertAddContactFail).hide();
+  $(showAllContactsBtn).hide();
+  $(alertInfoSendMoneyQty).hide();
+
+  logout();
+  loadContacts({ contacts: getContacts() });
   accountValidations();
+  searchContact();
+}
+
+function getUser() {
+  const { user } = JSON.parse(localStorage.getItem('data'));
+  return user;
+}
+
+function getContacts() {
+  const { user: { contacts } } = JSON.parse(localStorage.getItem('data'));
+  return contacts;
+}
+
+function getBalance(){
+  const { user: { balance } } = JSON.parse(localStorage.getItem('data'));
+  return balance;
 }
 
 function accountValidations() {
@@ -31,7 +54,34 @@ function accountValidations() {
   });
 }
 
-function addConctact({ contact }) {
+function searchContact() {
+  const contacts = getContacts();
+  $(searchContactsInput).on('input', (event) => {
+    event.preventDefault();
+    const term = event.target.value;
+    if (term.length > 0) {
+      const contactsFinded = contacts.filter(contact => {
+        return Object.values(contact).some(value => {
+          return typeof value === 'string' && value.toLowerCase().includes(term);
+        });
+      });
+      loadContacts({ contacts: contactsFinded });
+      showAllContacts();
+    } else {
+      loadContacts({ contacts });
+      $(showAllContactsBtn).hide();
+    }
+  });
+}
+
+function showAllContacts() {
+  $(showAllContactsBtn).show();
+  $(showAllContactsBtn).on('click', () => {
+    loadContacts({ contacts: getContacts() });
+  });
+}
+
+async function addConctact({ contact }) {
 
   const data = JSON.parse(localStorage.getItem('data'));
 
@@ -45,26 +95,80 @@ function addConctact({ contact }) {
     }
   }));
 
-  loading({location: '', timeMs: 2000});
+  await loading({ location: '', timeMs: 2000 });
   $(modalAddContact).modal('hide');
-  loadContacts();
+  loadContacts({ contacts: getContacts() });
 }
 
-function loadContacts() {
-  const { user: { contacts } } = JSON.parse(localStorage.getItem('data'));
+function loadContacts({ contacts }) {
+
   let contactHTMLText = '';
   contacts.forEach(contact => {
     contactHTMLText += getContactTemplate(contact)
   });
   accordionContacts.innerHTML = contactHTMLText;
+
+  contacts.forEach(contact => {
+    const id = contact.id;
+    const sendButton = document.querySelector(`button[data-contact-id="${id}"]`);
+    if (sendButton) {
+      sendButton.addEventListener('click', () => sendMoneyContact(id));
+    }
+  });
+}
+
+function sendMoneyContact(id) {
+  const user = getUser();
+  const { contact_name } = searchContactById({contactId: id});
+  const balance = getBalance();
+  contactNameLabel.innerText = `¿Cuanto dinero quieres transferir a ${contact_name}? Tu saldo es: ${balance}`;
+  $(sendMoneyBtn).on('click', async () => {
+    const qty = Number(sendMoneyQtyInput.value);
+    if(qty > balance){
+      $(alertInfoSendMoneyQty).show();
+      alertInfoSendMoneyQty.innerText = 'El monto supera su saldo actual';
+    } else if (qty <= 0) {
+      $(alertInfoSendMoneyQty).show();
+      alertInfoSendMoneyQty.innerText = 'Ingresa un monto mayor a cero';
+    } else {
+
+      const transaction = {
+        title: 'Transferencia a terceros',
+        contact_id: id,
+        total: -qty,
+        timestamp: new Date(),
+        type: TRANSACTIONS_TYPE.TRANSFER
+      }
+
+      user.balance = balance - qty;
+      user.transactions.unshift(transaction);
+
+      localStorage.setItem('data', JSON.stringify({
+        user,
+      }));
+
+      $(modalSendMoney).modal('hide');
+
+      await loading({ location: 'menu.html?transfer=true', timeMs: 2000, callback: navigateTo})
+
+    }
+  });
+}
+
+function searchContactById({contactId}) {
+  const contacts = getContacts();
+  return contacts.find(contact => contact.id === contactId);
 }
 
 function getContactTemplate({ id, contact_name, nick_name, account_type, account_number, bank, account_email }) {
   return `
     <div class="accordion-item border">
-      <h2 class="accordion-header">
+      <h2 class="accordion-header d-flex justify-content-between">
         <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${id}" aria-expanded="false" aria-controls="flush-collapseOne">
           <i class="bi bi-person-circle"></i> &nbsp ${contact_name}
+        </button>
+        <button data-contact-id="${id}" data-bs-target="#modal-send-money" data-bs-toggle="modal" class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-coin"></i> Enviar
         </button>
       </h2>
       <div id="flush-collapse${id}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
