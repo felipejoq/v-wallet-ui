@@ -8,8 +8,6 @@ Este proyecto contiene una maqueta hecha con herramientas básicas para la creac
 - user: isaura@test.com pass: 123123
 - user: cesar@test.com pass: 123123
 
-[Vista previa online](https://felipejoq.github.io/v-wallet-ui/)
-
 ## Capturas
 
 ![Captura](./assets/media/previews/1.png)
