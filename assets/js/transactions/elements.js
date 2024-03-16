@@ -1,0 +1,1 @@
+export const transactionsContainerUl = document.getElementById('transactions-list')

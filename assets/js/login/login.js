@@ -17,6 +17,7 @@ export const loginAction = ({loginForm}) => {
     const result = isValidLogin(request);
 
     if (result.isValid && result.user) {
+      result.user.logged = true;
       localStorage.setItem('data', JSON.stringify({ ...data, user: result.user }));
       loading({
         location: `/pages/menu.html`,

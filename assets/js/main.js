@@ -4,15 +4,11 @@ import { logout } from "./login/logout.js";
 import { menuInit } from "./menu/menu.js";
 import { depositInit } from "./deposit/deposit.js";
 import { sendMoneyInit } from "./send-money/send-money.js";
+import { transactionsInit } from "./transactions/transactions.js";
+import { homeInit } from "./home/home.js";
+import { authGuard, isLoggedUser, setInitData } from "./login/auth.guard.js";
 
-const data = localStorage.getItem('data');
-
-if (!data) {
-  const siteData = {
-    user: null,
-  }
-  localStorage.setItem('data', JSON.stringify(siteData));
-}
+setInitData();
 
 const pathname = window.location.pathname.split('/').at(-1);
 
@@ -21,21 +17,31 @@ switch (pathname) {
     loginAction({ loginForm });
     break
   case 'menu.html':
-    menuInit()
-    logout();
+    authGuard();
+    if(isLoggedUser()) {
+      menuInit();
+    }
     break;
   case 'send-money.html':
-    sendMoneyInit();
-    logout();
+    authGuard();
+    if(isLoggedUser()) {
+      sendMoneyInit();
+    }
     break;
   case 'deposit.html':
-    depositInit();
-    logout();
+    authGuard();
+    if(isLoggedUser()) {
+      depositInit();
+    }
     break;
   case 'transactions.html':
-    logout();
+    authGuard();
+    if(isLoggedUser()) {
+      transactionsInit();
+    }
     break;
   case 'index.html':
+    homeInit();
     break;
   default:
     break;
