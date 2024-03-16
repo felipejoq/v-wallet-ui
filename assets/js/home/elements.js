@@ -1,0 +1,1 @@
+export const loginBtn = document.getElementById('login-btn');
